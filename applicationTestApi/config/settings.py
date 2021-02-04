@@ -13,6 +13,12 @@ import datetime
 import os
 from pathlib import Path
 
+import environ
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'attachments/')
@@ -123,16 +129,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'email'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='info@info.com')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='pass')
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'candidate',
-        'PASSWORD': 'postgres',
-        'USER': 'postgres',
+        'PASSWORD': env('DATABASE_PASSWORD', default='postgres'),
+        'USER': env('DATABASE_USERNAME', default='postgres'),
         'HOST': 'localhost',
         'PORT': '5432',
     }

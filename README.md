@@ -5,18 +5,18 @@ has created with createsuperuser to see the admin interface, otherwise simple us
 
 ## API server
 
-Create a Virtual Environnment with Python 3
+Create a Virtual Environment with Python 3
 
 Install PostgreSQL
 
-Install the backend requirements by rununing pip install -r requirememts.txt
+Install the backend requirements by running pip install -r requirememts.txt
 
-Set some customized environnement variables in setting.py file
-       
-       EMAIL_HOST_USER = 'email'
-       EMAIL_HOST_PASSWORD = 'password'
-       PASSWORD: 'postgres'
-       USER: 'postgres'
+Set some customized environment variables in setting.py file, add new .env file under config folder and 
+
+                    EMAIL_HOST_USER = your_password
+                    EMAIL_HOST_PASSWORD = password_your_email
+                    DATABASE_PASSWORD = password_db
+                    DATABASE_USERNAME = username_db
 
 Run python manage.py makemigrations to create new migrations based on the changes you have made to your models
 
